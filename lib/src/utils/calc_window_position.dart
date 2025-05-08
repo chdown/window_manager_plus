@@ -6,18 +6,19 @@ Future<Offset> calcWindowPosition(
   Alignment alignment,
 ) async {
   Display primaryDisplay = await screenRetriever.getPrimaryDisplay();
-  List<Display> allDisplays = await screenRetriever.getAllDisplays();
-  Offset cursorScreenPoint = await screenRetriever.getCursorScreenPoint();
-
-  Display currentDisplay = allDisplays.firstWhere(
-    (display) => Rect.fromLTWH(
-      display.visiblePosition!.dx,
-      display.visiblePosition!.dy,
-      display.size.width,
-      display.size.height,
-    ).contains(cursorScreenPoint),
-    orElse: () => primaryDisplay,
-  );
+  // List<Display> allDisplays = await screenRetriever.getAllDisplays();
+  // Offset cursorScreenPoint = await screenRetriever.getCursorScreenPoint();
+  //
+  // Display currentDisplay = allDisplays.firstWhere(
+  //   (display) => Rect.fromLTWH(
+  //     display.visiblePosition!.dx,
+  //     display.visiblePosition!.dy,
+  //     display.size.width,
+  //     display.size.height,
+  //   ).contains(cursorScreenPoint),
+  //   orElse: () => primaryDisplay,
+  // );
+  Display currentDisplay = primaryDisplay;
 
   num visibleWidth = currentDisplay.size.width;
   num visibleHeight = currentDisplay.size.height;
